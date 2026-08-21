@@ -130,7 +130,7 @@ export async function parseLlmCommand(
         }
 
         const validation = DeviceCommandSchema.safeParse(candidate);
-        if (!validation.sucess) {
+        if (!validation.success) {
             return {
                 success: false,
                 error: {
