@@ -50,7 +50,7 @@ function extractDurationMinutes(input: string): number | undefined { // 定义�
         /(\d+(?:\.\d+)?)\s*(?:minutes?|mins?|分钟)/i
     );
     return minuteMatch ? Number(minuteMatch[1]) : undefined;
-}   
+}
 
 export function parseRuleCommand(
     rawinput: string,
@@ -71,7 +71,7 @@ export function parseRuleCommand(
             intent: "shutdown",
             parameters: {},
         };
-    }else if (/(计时|定时|timer)/i.test(input)){
+    } else if (/(计时|定时|timer)/i.test(input)) {
         const duration = extractDurationMinutes(input);
         if (duration === undefined) {
             return {
@@ -102,18 +102,20 @@ export function parseRuleCommand(
         candidate = {
             ...basecommand,
             intent: "start_cooking",
-            parameters: { temperatureFahrenheit: temperature, 
-                ...(durationMinutes == undefined ? {} : { durationMinutes } )},
+            parameters: {
+                temperatureFahrenheit: temperature,
+                ...(durationMinutes == undefined ? {} : { durationMinutes })
+            },
         };
-    }else{
+    } else {
         const temperatureFahrenheit = extractTemperature(input);
-        if(temperatureFahrenheit != undefined&& /(设置|调到|温度|set|temperature)/i.test(input)){
+        if (temperatureFahrenheit != undefined && /(设置|调到|温度|set|temperature)/i.test(input)) {
             candidate = {
                 ...basecommand,
                 intent: "set_temperature",
                 parameters: { temperatureFahrenheit },
             };
-        }else{
+        } else {
             return {
                 success: false,
                 error: {
@@ -123,18 +125,18 @@ export function parseRuleCommand(
             };
         }
     }
-       const validation = DeviceCommandSchema.safeParse(candidate); // 使用 Zod 验证候选指令的结构和参数。
-        if(!validation.success){
-            return {
-                success: false,
-                error: {
-                    code: "INVALID_COMMAND",
-                    message: validation.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; "),
-                },
-            };
-        }
+    const validation = DeviceCommandSchema.safeParse(candidate); // 使用 Zod 验证候选指令的结构和参数。
+    if (!validation.success) {
         return {
-            success: true,
-            command: validation.data,
+            success: false,
+            error: {
+                code: "INVALID_COMMAND",
+                message: validation.error.issues.map((issue) => `${issue.path.join(".")}: ${issue.message}`).join("; "),
+            },
         };
+    }
+    return {
+        success: true,
+        command: validation.data,
+    };
 }

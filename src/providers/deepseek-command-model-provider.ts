@@ -4,7 +4,7 @@ import type {
     CommandModelProvider,
 } from "../model/command-model-provider";
 import { ModelCommandSchema, type ModelCommand } from "../model/model-command";
-
+import { ModelProviderError ,normalizeOpenAIError} from "../model/model-provider-error";
 const DEFAULT_BASE_URL = "https://api.deepseek.com";
 const DEFAULT_MODEL = "deepseek-chat";
 
@@ -55,6 +55,10 @@ export class DeepSeekCommandModelProvider implements CommandModelProvider {
         input: string,
         context: CommandModelContext,
     ): Promise<ModelCommand> {
+
+        try {
+            
+       
         const response = await this.client.chat.completions.create({
             model: this.model,
             messages: [
@@ -84,7 +88,10 @@ export class DeepSeekCommandModelProvider implements CommandModelProvider {
         try {
             decoded = JSON.parse(content);
         } catch {
-            throw new Error("DeepSeek returned invalid JSON.");
+            throw new ModelProviderError(
+                "INVALID_REQUEST",
+               "DeepSeek returned invalid JSON."
+            )
         }
 
         const validation = ModelCommandSchema.safeParse(decoded);
@@ -96,5 +103,11 @@ export class DeepSeekCommandModelProvider implements CommandModelProvider {
         }
 
         return validation.data;
+         } catch (error) {
+            if(error instanceof ModelProviderError){
+                throw error;
+            }
+            throw normalizeOpenAIError(error)
+        }
     }
 }

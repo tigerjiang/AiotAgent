@@ -5,8 +5,7 @@ import type {
     CommandModelProvider,
 } from "../model/command-model-provider";
 import { ModelCommandSchema, type ModelCommand } from "../model/model-command";
-import { Content } from "openai/resources/skills.mjs";
-import { format } from "node:path";
+import { ModelProviderError,normalizeOpenAIError } from "../model/model-provider-error";
 
 const SYSTEM_PROMPT = [
     "Extract exactly one smart-cooking device command.",
@@ -20,6 +19,8 @@ const SYSTEM_PROMPT = [
     "Use intent=unknown for unrelated, ambiguous, or unsupported requests."
 ].join("\n");
 
+
+
 export class OpenAICommandModelProvider implements CommandModelProvider {
     constructor(
         private readonly client: OpenAI,
@@ -27,25 +28,37 @@ export class OpenAICommandModelProvider implements CommandModelProvider {
     ) { }
     async parse(input: string,
         context: CommandModelContext): Promise<ModelCommand> {
-        const response = await this.client.responses.parse({
-            model: this.model,
-            input: [
-                {
-                    role: "system",
-                    content: [SYSTEM_PROMPT, `Current deivce type : ${context.deviceType}.`].join("\n")
-                },
-                {
-                    role: "user",
-                    content: input
+        try {
+            const response = await this.client.responses.parse({
+                model: this.model,
+                input: [
+                    {
+                        role: "system",
+                        content: [SYSTEM_PROMPT, `Current deivce type : ${context.deviceType}.`].join("\n")
+                    },
+                    {
+                        role: "user",
+                        content: input
+                    }
+                ],
+                text: {
+                    format: zodTextFormat(ModelCommandSchema, "device_command_intent")
                 }
-            ],
-            text: {
-                format: zodTextFormat(ModelCommandSchema, "device_command_intent")
+            });
+            if (!response.output_parsed) {
+                throw new ModelProviderError(
+                    "INVALID_REQUEST",
+                    "The model did not return a parsed command."
+                );
             }
-        });
-        if (!response.output_parsed) {
-            throw new Error("The model did not return a parsed command.");
+            return response.output_parsed;
+        } catch (error) {
+            if (error instanceof ModelProviderError) {
+                throw error;
+            }
+            throw normalizeOpenAIError(error)
+
         }
-        return response.output_parsed;
+
     }
 }

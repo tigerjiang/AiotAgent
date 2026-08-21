@@ -22,6 +22,12 @@ function createProvider(): CommandModelProvider {
             return new OpenAICommandModelProvider(
                 new OpenAI({
                     apiKey: requireEnvironmentVariable("OPENAI_API_KEY"),
+                    timeout:Number(
+                        process.env.OPENAI_TIMEOUT_MS??"15000"
+                    ),
+                    maxRetries:Number(
+                        process.env.OPENAI_MAX_RETRIES??"1"
+                    )   
                 }),
                 process.env.OPENAI_MODEL ?? "gpt-5.6",
             );

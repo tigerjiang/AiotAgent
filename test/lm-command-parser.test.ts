@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import type { CommandModelProvider } from "../src/model/command-model-provider.js";
 import type { ModelCommand } from "../src/model/model-command.js";
 import { parseLlmCommand } from "../src/parser/llm-command-parser.js";
+import { ModelProviderError, type ModelProviderErrorCode } from "../src/model/model-provider-error.js";
 
 const context = {
   deviceId: "grill-demo-001",
@@ -128,4 +129,38 @@ describe("parseLlmCommand", () => {
       }
     });
   });
+
+  it.each(
+    [
+      ["TIMEOUT", "MODEL_TIMEOUT"],
+      ["RATE_LIMIT", "MODEL_RATE_LIMIT_ERROR"],
+      ["AUTHENTICATION", "MODEL_AUTHENTICATION_ERROR"],
+      ["CONNECTION", "MODEL_UNAVAILABLE"],
+      ["UPSTREAM", "MODEL_UNAVAILABLE"]
+    ] as const
+  )(
+    "maps %s provider error to %s",
+    async (
+      providerCode: ModelProviderErrorCode,
+      expectedCode
+    ) => {
+      const provider: CommandModelProvider = {
+        parse: vi.fn().mockRejectedValue(
+          new ModelProviderError(
+            providerCode,
+            "Simulated provider failure."
+          )
+        )
+      };
+      const result = await parseLlmCommand(
+        "Start cooking at 225°F",
+        context,
+        provider
+      );
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.code).toBe(expectedCode);
+      }
+    }
+  )
 });

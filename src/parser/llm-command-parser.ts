@@ -2,6 +2,22 @@ import { randomUUID } from "crypto";
 import { DeviceCommandSchema, type DeviceCommand } from "../domain/device-command";
 import type { CommandModelProvider } from "../model/command-model-provider";
 import type { RuleParseContext } from "./rule-command-parser";
+import {
+    ModelProviderError,
+    type ModelProviderErrorCode
+} from "../model/model-provider-error.js";
+
+export type LlmParseErrorCode =
+    | "UNSUPPORTED_INTENT"
+    | "MISSING_PARAMETER"
+    | "INVALID_COMMAND"
+    | "MODEL_AUTHENTICATION_ERROR"
+    | "MODEL_RATE_LIMIT_ERROR"
+    | "MODEL_TIMEOUT"
+    | "MODEL_UNAVAILABLE"
+    | "MODEL_INVALID_REQUEST"
+    | "MODEL_ERROR";
+
 export type LlmParseResult =
     | {
         success: true,
@@ -10,15 +26,24 @@ export type LlmParseResult =
     | {
         success: false,
         error: {
-            code:
-            | "UNSUPPORTED_INTENT"
-            | "MISSING_PARAMETER"
-            | "INVALID_COMMAND"
-            | "MODEL_ERROR";
+            code: LlmParseErrorCode;
             message: string;
         };
 
     };
+
+const MODEL_ERROR_CODE_MAP: Record<
+    ModelProviderErrorCode,
+    LlmParseErrorCode
+> = {
+    AUTHENTICATION: "MODEL_AUTHENTICATION_ERROR",
+    RATE_LIMIT: "MODEL_RATE_LIMIT_ERROR",
+    TIMEOUT: "MODEL_TIMEOUT",
+    CONNECTION: "MODEL_UNAVAILABLE",
+    INVALID_REQUEST: "MODEL_INVALID_REQUEST",
+    UPSTREAM: "MODEL_UNAVAILABLE",
+    UNKNOWN: "MODEL_ERROR"
+};
 
 export async function parseLlmCommand(
     rawInput: string,
@@ -149,14 +174,20 @@ export async function parseLlmCommand(
         };
 
     } catch (error) {
+        if (error instanceof ModelProviderError) {
+            return {
+                success: false,
+                error: {
+                    code: MODEL_ERROR_CODE_MAP[error.code],
+                    message: error.message
+                }
+            };
+        }
         return {
             success: false,
             error: {
                 code: "MODEL_ERROR",
-                message:
-                    error instanceof Error
-                        ? error.message
-                        : "Unknown model service error."
+                message: "Model service unavailable"
             }
         };
 
