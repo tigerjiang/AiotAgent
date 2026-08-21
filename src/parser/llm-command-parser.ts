@@ -43,7 +43,7 @@ export async function parseLlmCommand(
             deviceId: context.deviceId,
             deviceType: context.deviceType,
             issueAt: (context.now ?? new Date()).toISOString(),
-            requireConfirmation: true
+            requiresConfirmation: true
         };
         let candidate: unknown;
         switch (parsed.intent) {
@@ -146,7 +146,7 @@ export async function parseLlmCommand(
         return {
             success: true,
             command: validation.data
-        }
+        };
 
     } catch (error) {
         return {
