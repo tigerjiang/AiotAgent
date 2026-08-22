@@ -65,7 +65,7 @@ describe("parseRuleCommand", () => { // 定义规则指令解析函数的测试�
         expect(result).toEqual({
             success: false,
             error: {
-                code: "INVALID_PARAMETERS",
+                code: "MISSING_PARAMETER",
                 message: "Cooking temperature is required.",
             },
         });

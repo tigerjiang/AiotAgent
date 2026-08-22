@@ -4,7 +4,9 @@ import type { CommandModelProvider } from "../model/command-model-provider";
 import { parseLlmCommand } from "../parser/llm-command-parser";
 import { DeepSeekCommandModelProvider } from "../providers/deepseek-command-model-provider";
 import { OpenAICommandModelProvider } from "../providers/openai-command-model-provider";
-
+import {
+    parseCommand
+} from "../parser/command-parser.js";
 function requireEnvironmentVariable(name: string): string {
     const value = process.env[name];
     if (!value) {
@@ -22,12 +24,12 @@ function createProvider(): CommandModelProvider {
             return new OpenAICommandModelProvider(
                 new OpenAI({
                     apiKey: requireEnvironmentVariable("OPENAI_API_KEY"),
-                    timeout:Number(
-                        process.env.OPENAI_TIMEOUT_MS??"15000"
+                    timeout: Number(
+                        process.env.OPENAI_TIMEOUT_MS ?? "15000"
                     ),
-                    maxRetries:Number(
-                        process.env.OPENAI_MAX_RETRIES??"1"
-                    )   
+                    maxRetries: Number(
+                        process.env.OPENAI_MAX_RETRIES ?? "1"
+                    )
                 }),
                 process.env.OPENAI_MODEL ?? "gpt-5.6",
             );
@@ -53,6 +55,7 @@ const result = await parseLlmCommand(
     provider,
 );
 
+
 console.dir(result, {
     depth: null,
 });
@@ -60,3 +63,17 @@ console.dir(result, {
 if (!result.success) {
     process.exitCode = 1;
 }
+
+const anotherResult = await parseCommand(
+    "Please make it three hundred degrees Fahrenheit",
+    {
+        deviceId: "grill-demo-001",
+        deviceType: "pellet_grill",
+        now: new Date(),
+    },
+    provider
+)
+
+console.dir(anotherResult, {
+  depth: null
+});

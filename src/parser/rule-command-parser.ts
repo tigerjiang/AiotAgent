@@ -19,7 +19,7 @@ export type ParseResult = // 使用类型别名定义解析成功与失败结果
     | {
         success: false; // 标记解析失败。
         error: {
-            code: "UNSUPPORTED_INTENT" | "INVALID_PARAMETERS" | "INVALID_COMMAND"; // 指定错误类型，可能是未支持的意图、参数无效或缺少必填字段。
+            code: "UNSUPPORTED_INTENT" | "INVALID_PARAMETERS" | "MISSING_PARAMETER" | "INVALID_COMMAND"; // 指定错误类型，可能是未支持的意图、参数无效或缺少必填字段。
             message: string; // 提供解析失败的错误信息。
         };
     };
@@ -94,7 +94,7 @@ export function parseRuleCommand(
             return {
                 success: false,
                 error: {
-                    code: "INVALID_PARAMETERS",
+                    code: "MISSING_PARAMETER",
                     message: "Cooking temperature is required.",
                 },
             };
