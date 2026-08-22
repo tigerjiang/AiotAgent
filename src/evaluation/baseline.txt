@@ -1,0 +1,29 @@
+Failure analysis:
+
+Case: rule-shutdown-en
+Expected:{"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:{"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+Likely layer: rule 
+Next action: 
+
+Case: llm-word-start-duration
+Expected:{"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:{"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+Likely layer: rule 
+Next action: 
+
+
+
+Case: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+Likely layer: rule 
+Next action: 
+
+
+
+Case: llm-start-zh
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":275}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+Likely layer: rule 
+Next action: 

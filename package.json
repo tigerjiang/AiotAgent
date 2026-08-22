@@ -8,7 +8,8 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "typecheck": "tsc --noEmit",
-    "demo:llm": "tsx src/examples/test-llm-parser.ts"
+    "demo:llm": "tsx src/examples/test-llm-parser.ts",
+    "eval:commands": "tsx src/evaluation/run-command-evaluation.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "rule-set-temperature-zh",
+    "input": "把烤炉温度设置到300°F",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_temperature",
+      "parameters": {
+        "temperatureFahrenheit": 300
+      }
+    }
+  },
+  {
+    "id": "rule-set-temperature-en",
+    "input": "Set temperature to 275°F",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_temperature",
+      "parameters": {
+        "temperatureFahrenheit": 275
+      }
+    }
+  },
+  {
+    "id": "rule-timer-zh",
+    "input": "设置一个30分钟计时器",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_timer",
+      "parameters": {
+        "durationMinutes": 30
+      }
+    }
+  },
+  {
+    "id": "rule-timer-en",
+    "input": "Set a timer for 45 minutes",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_timer",
+      "parameters": {
+        "durationMinutes": 45
+      }
+    }
+  },
+  {
+    "id": "rule-timer-hours",
+    "input": "Set a timer for 2 hours",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_timer",
+      "parameters": {
+        "durationMinutes": 120
+      }
+    }
+  },
+  {
+    "id": "rule-shutdown-zh",
+    "input": "关闭烤炉",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "shutdown",
+      "parameters": {}
+    }
+  },
+  {
+    "id": "rule-shutdown-en",
+    "input": "Shut down the grill",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "shutdown",
+      "parameters": {}
+    }
+  },
+  {
+    "id": "rule-start-duration",
+    "input": "Start cooking at 225°F for 2 hours",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "start_cooking",
+      "parameters": {
+        "temperatureFahrenheit": 225,
+        "durationMinutes": 120
+      }
+    }
+  },
+  {
+    "id": "rule-start-temperature",
+    "input": "Start cooking at 350°F",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "start_cooking",
+      "parameters": {
+        "temperatureFahrenheit": 350
+      }
+    }
+  },
+  {
+    "id": "rule-temperature-chinese-unit",
+    "input": "把烤炉温度设置到300华氏度",
+    "expected": {
+      "success": true,
+      "source": "rule",
+      "intent": "set_temperature",
+      "parameters": {
+        "temperatureFahrenheit": 300
+      }
+    }
+  },
+  {
+    "id": "rule-missing-temperature",
+    "input": "启动烤炉",
+    "expected": {
+      "success": false,
+      "source": "rule",
+      "errorCode": "MISSING_PARAMETER"
+    }
+  },
+  {
+    "id": "rule-unsafe-temperature",
+    "input": "Set temperature to 600°F",
+    "expected": {
+      "success": false,
+      "source": "rule",
+      "errorCode": "INVALID_COMMAND"
+    }
+  },
+  {
+    "id": "llm-word-temperature",
+    "input": "Please make it three hundred degrees Fahrenheit",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "set_temperature",
+      "parameters": {
+        "temperatureFahrenheit": 300
+      }
+    }
+  },
+  {
+    "id": "llm-word-start-duration",
+    "input": "Begin cooking at two hundred twenty-five degrees Fahrenheit for two hours",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "start_cooking",
+      "parameters": {
+        "temperatureFahrenheit": 225,
+        "durationMinutes": 120
+      }
+    }
+  },
+  {
+    "id": "llm-fractional-hour",
+    "input": "Set a timer for an hour and a half",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "set_timer",
+      "parameters": {
+        "durationMinutes": 90
+      }
+    }
+  },
+  {
+    "id": "llm-celsius-zh",
+    "input": "把温度调到一百八十摄氏度",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "set_temperature",
+      "parameters": {
+        "temperatureFahrenheit": 356
+      }
+    }
+  },
+  {
+    "id": "llm-start-zh",
+    "input": "用二百七十五华氏度开始烹饪",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "start_cooking",
+      "parameters": {
+        "temperatureFahrenheit": 275
+      }
+    }
+  },
+  {
+    "id": "llm-shutdown-natural",
+    "input": "Stop the cooking process now",
+    "expected": {
+      "success": true,
+      "source": "llm",
+      "intent": "shutdown",
+      "parameters": {}
+    }
+  },
+  {
+    "id": "llm-unrelated",
+    "input": "What is the weather today?",
+    "expected": {
+      "success": false,
+      "source": "llm",
+      "errorCode": "UNSUPPORTED_INTENT"
+    }
+  },
+  {
+    "id": "llm-ambiguous",
+    "input": "烤低一点",
+    "expected": {
+      "success": false,
+      "source": "llm",
+      "errorCode": "UNSUPPORTED_INTENT"
+    }
+  }
+]

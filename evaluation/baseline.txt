@@ -1,0 +1,558 @@
+
+> aiot-device-command-service@1.0.0 eval:commands
+> tsx src/evaluation/run-command-evaluation.ts
+
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 1
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 2
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 3
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 4
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'        │ true   │ 'rule' │ 0         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 5
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'        │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'        │ true   │ 'rule' │ 0         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+Evaluation summary
+Cases: 6
+Accuracy: 100.0%
+Rule hit rate: 100.0%
+LLM fallback rate: 0.0%
+P95 latency: 4ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'        │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'        │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'        │ false  │ 'llm'  │ 2180      │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 7
+Accuracy: 85.7%
+Rule hit rate: 85.7%
+LLM fallback rate: 14.3%
+P95 latency: 2180ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'        │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'        │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'        │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'     │ true   │ 'rule' │ 1         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 8
+Accuracy: 87.5%
+Rule hit rate: 87.5%
+LLM fallback rate: 12.5%
+P95 latency: 2180ms
+┌─────────┬───────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                        │ passed │ source │ elapsedMs │
+├─────────┼───────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh' │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en' │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'           │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'           │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'        │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'        │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'        │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'     │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'  │ true   │ 'rule' │ 0         │
+└─────────┴───────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 9
+Accuracy: 88.9%
+Rule hit rate: 88.9%
+LLM fallback rate: 11.1%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 10
+Accuracy: 90.0%
+Rule hit rate: 90.0%
+LLM fallback rate: 10.0%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 11
+Accuracy: 90.9%
+Rule hit rate: 90.9%
+LLM fallback rate: 9.1%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 12
+Accuracy: 91.7%
+Rule hit rate: 91.7%
+LLM fallback rate: 8.3%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+Evaluation summary
+Cases: 13
+Accuracy: 92.3%
+Rule hit rate: 84.6%
+LLM fallback rate: 15.4%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+Evaluation summary
+Cases: 14
+Accuracy: 85.7%
+Rule hit rate: 85.7%
+LLM fallback rate: 14.3%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+Evaluation summary
+Cases: 15
+Accuracy: 80.0%
+Rule hit rate: 86.7%
+LLM fallback rate: 13.3%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+│ 15      │ 'llm-celsius-zh'                │ true   │ 'llm'  │ 1531      │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+Evaluation summary
+Cases: 16
+Accuracy: 81.3%
+Rule hit rate: 81.3%
+LLM fallback rate: 18.8%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+│ 15      │ 'llm-celsius-zh'                │ true   │ 'llm'  │ 1531      │
+│ 16      │ 'llm-start-zh'                  │ false  │ 'rule' │ 0         │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+FAILED: llm-start-zh
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":275}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+Evaluation summary
+Cases: 17
+Accuracy: 76.5%
+Rule hit rate: 82.4%
+LLM fallback rate: 17.6%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+│ 15      │ 'llm-celsius-zh'                │ true   │ 'llm'  │ 1531      │
+│ 16      │ 'llm-start-zh'                  │ false  │ 'rule' │ 0         │
+│ 17      │ 'llm-shutdown-natural'          │ true   │ 'llm'  │ 1360      │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+FAILED: llm-start-zh
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":275}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+Evaluation summary
+Cases: 18
+Accuracy: 77.8%
+Rule hit rate: 77.8%
+LLM fallback rate: 22.2%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+│ 15      │ 'llm-celsius-zh'                │ true   │ 'llm'  │ 1531      │
+│ 16      │ 'llm-start-zh'                  │ false  │ 'rule' │ 0         │
+│ 17      │ 'llm-shutdown-natural'          │ true   │ 'llm'  │ 1360      │
+│ 18      │ 'llm-unrelated'                 │ true   │ 'llm'  │ 1933      │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+FAILED: llm-start-zh
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":275}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+Evaluation summary
+Cases: 19
+Accuracy: 78.9%
+Rule hit rate: 73.7%
+LLM fallback rate: 26.3%
+P95 latency: 2180ms
+┌─────────┬─────────────────────────────────┬────────┬────────┬───────────┐
+│ (index) │ id                              │ passed │ source │ elapsedMs │
+├─────────┼─────────────────────────────────┼────────┼────────┼───────────┤
+│ 0       │ 'rule-set-temperature-zh'       │ true   │ 'rule' │ 4         │
+│ 1       │ 'rule-set-temperature-en'       │ true   │ 'rule' │ 0         │
+│ 2       │ 'rule-timer-zh'                 │ true   │ 'rule' │ 1         │
+│ 3       │ 'rule-timer-en'                 │ true   │ 'rule' │ 0         │
+│ 4       │ 'rule-timer-hours'              │ true   │ 'rule' │ 0         │
+│ 5       │ 'rule-shutdown-zh'              │ true   │ 'rule' │ 0         │
+│ 6       │ 'rule-shutdown-en'              │ false  │ 'llm'  │ 2180      │
+│ 7       │ 'rule-start-duration'           │ true   │ 'rule' │ 1         │
+│ 8       │ 'rule-start-temperature'        │ true   │ 'rule' │ 0         │
+│ 9       │ 'rule-temperature-chinese-unit' │ true   │ 'rule' │ 1         │
+│ 10      │ 'rule-missing-temperature'      │ true   │ 'rule' │ 0         │
+│ 11      │ 'rule-unsafe-temperature'       │ true   │ 'rule' │ 1         │
+│ 12      │ 'llm-word-temperature'          │ true   │ 'llm'  │ 1829      │
+│ 13      │ 'llm-word-start-duration'       │ false  │ 'rule' │ 0         │
+│ 14      │ 'llm-fractional-hour'           │ false  │ 'rule' │ 0         │
+│ 15      │ 'llm-celsius-zh'                │ true   │ 'llm'  │ 1531      │
+│ 16      │ 'llm-start-zh'                  │ false  │ 'rule' │ 0         │
+│ 17      │ 'llm-shutdown-natural'          │ true   │ 'llm'  │ 1360      │
+│ 18      │ 'llm-unrelated'                 │ true   │ 'llm'  │ 1933      │
+│ 19      │ 'llm-ambiguous'                 │ true   │ 'llm'  │ 2742      │
+└─────────┴─────────────────────────────────┴────────┴────────┴───────────┘
+
+FAILED: rule-shutdown-en
+Expected: {"success":true,"source":"rule","intent":"shutdown","parameters":{}}
+Actual:   {"success":true,"source":"llm","intent":"shutdown","parameters":{}}
+
+FAILED: llm-word-start-duration
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":225,"durationMinutes":120}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+FAILED: llm-fractional-hour
+Expected: {"success":true,"source":"llm","intent":"set_timer","parameters":{"durationMinutes":90}}
+Actual:   {"success":false,"source":"rule","errorCode":"INVALID_PARAMETERS"}
+
+FAILED: llm-start-zh
+Expected: {"success":true,"source":"llm","intent":"start_cooking","parameters":{"temperatureFahrenheit":275}}
+Actual:   {"success":false,"source":"rule","errorCode":"MISSING_PARAMETER"}
+
+Evaluation summary
+Cases: 20
+Accuracy: 80.0%
+Rule hit rate: 70.0%
+LLM fallback rate: 30.0%
+P95 latency: 2180ms
