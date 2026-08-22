@@ -67,7 +67,7 @@ export async function parseLlmCommand(
             requestId: randomUUID(),
             deviceId: context.deviceId,
             deviceType: context.deviceType,
-            issueAt: (context.now ?? new Date()).toISOString(),
+            issuedAt: (context.now ?? new Date()).toISOString(),
             requiresConfirmation: true
         };
         let candidate: unknown;

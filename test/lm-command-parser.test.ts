@@ -39,7 +39,7 @@ describe("parseLlmCommand", () => {
       expect(result.command.deviceId).toBe("grill-demo-001");
       expect(result.command.parameters.temperatureFahrenheit).toBe(225);
       expect(result.command.parameters.durationMinutes).toBe(120);
-      expect(result.command.issueAt).toBe(
+      expect(result.command.issuedAt).toBe(
         "2026-08-11T00:00:00.000Z"
       );
     }

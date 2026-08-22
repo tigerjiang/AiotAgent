@@ -61,7 +61,7 @@ export function parseRuleCommand(
         requestId: randomUUID(), // 生成唯一的请求标识符。
         deviceId: context.deviceId, // 使用上下文中的设备标识。
         deviceType: context.deviceType, // 使用上下文中的设备类型。
-        issueAt: (context.now ?? new Date()).toISOString(), // 使用当前时间作为指令签发时间。
+        issuedAt: (context.now ?? new Date()).toISOString(), // 使用当前时间作为指令签发时间。
         requiresConfirmation: true, // 默认需要用户确认。
     };
     let candidate: unknown;

@@ -5,7 +5,7 @@ const baseCommand = { // 定义各测试用例复用的合法基础指令字段�
     requestId: "123e4567-e89b-12d3-a456-426614174000", // 提供符合 UUID 格式的固定请求标识。
     deviceId: "device123", // 指定测试使用的目标设备标识。
     deviceType: "pellet_grill", // 指定测试设备为颗粒燃料烤炉。
-    issueAt: new Date().toISOString(), // 使用当前时间生成合法的指令签发时间。
+    issuedAt: new Date().toISOString(), // 使用当前时间生成合法的指令签发时间。
     requiresConfirmation: true, // 标记测试指令在执行前需要确认。
 }; // 结束基础测试指令定义。
 

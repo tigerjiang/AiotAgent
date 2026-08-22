@@ -14,7 +14,7 @@ import { ro } from "zod/locales";
  * 成功用例的期望结果。
  *
  * 评估只关心解析来源、意图和业务参数，不比较 requestId、deviceId、
- * issueAt 等每次运行都可能变化或与评估目标无关的字段。
+ * issuedAt 等每次运行都可能变化或与评估目标无关的字段。
  */
 interface ExpectedSuccess {
     success: true;
