@@ -13,7 +13,7 @@ const BaseCommandSchema = z.object({ // 定义所有设备指令共享的基础�
     requestId: z.string().uuid(), // 要求请求标识是有效的 UUID 字符串。
     deviceId: z.string().min(1), // 要求设备标识至少包含一个字符。
     deviceType: DeviceTypeSchema, // 要求设备类型属于受支持的枚举值。
-    issueAt: z.string().datetime(), // 要求指令签发时间是有效的日期时间字符串。
+    issuedAt: z.string().datetime(), // 要求指令签发时间是有效的日期时间字符串。
     requiresConfirmation: z.boolean(), // 标记执行指令前是否需要用户确认。
 }); // 结束基础指令结构定义。
 
