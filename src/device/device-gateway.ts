@@ -31,7 +31,7 @@ export type DeviceExecutionResult =
 
 export interface ExecuteCommandOptions {
     confirmed: boolean;
-    new?: Date;
+    now?: Date;
 
 }
 

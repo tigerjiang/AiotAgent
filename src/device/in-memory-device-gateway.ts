@@ -127,7 +127,7 @@ export class InMemoryDeviceGateway implements DeviceGateway {
             }
         }
         next.updatedAt = (
-            options.new ?? new Date()
+            options.now ?? new Date()
         ).toISOString();
 
         const validated = DeviceStateSchema.parse(next);

@@ -4,8 +4,6 @@ import { InMemoryDeviceGateway } from "../src/device/in-memory-device-gateway";
 import type {
     DeviceState
 } from "../src/device/device-state.js";
-import { success } from "zod";
-import { tr } from "zod/locales";
 
 const initialState: DeviceState = {
     deviceId: "grill-demo-001",
@@ -31,9 +29,9 @@ function createCommand(intent: string, parameters: unknown) {
 }
 
 describe("InMemoryDeviceGateway", () => {
-    let gateWay: InMemoryDeviceGateway;
+    let gateway: InMemoryDeviceGateway;
     beforeEach(() => {
-        gateWay = new InMemoryDeviceGateway([initialState]);
+        gateway = new InMemoryDeviceGateway([initialState]);
     });
 
     it("requires confirmation before execution", async () => {
@@ -45,7 +43,7 @@ describe("InMemoryDeviceGateway", () => {
            
         );
 
-        const result = await gateWay.execute(command, { confirmed: false });
+        const result = await gateway.execute(command, { confirmed: false });
 
         expect(result).toEqual({
             success: false,
@@ -63,9 +61,9 @@ describe("InMemoryDeviceGateway", () => {
             durationMinutes: 120
         });
 
-        const result = await gateWay.execute(command, {
+        const result = await gateway.execute(command, {
             confirmed: true,
-            new: new Date(
+            now: new Date(
                 "2026-08-15T01:00:00.000Z")
         });
         expect(result.success).toBe(true);
@@ -82,7 +80,7 @@ describe("InMemoryDeviceGateway", () => {
                 temperatureFahrenheit: 300
             }
         );
-        const result = await gateWay.execute(command, {
+        const result = await gateway.execute(command, {
             confirmed: true,
         });
 
@@ -95,7 +93,7 @@ describe("InMemoryDeviceGateway", () => {
 
 
     it("allows temperature changes after ignition", async () => {
-        await gateWay.execute(
+        await gateway.execute(
             createCommand(
                 "start_cooking", {
                 temperatureFahrenheit: 225
@@ -105,7 +103,7 @@ describe("InMemoryDeviceGateway", () => {
                 confirmed: true
             }
         );
-        const result = await gateWay.execute(
+        const result = await gateway.execute(
             createCommand(
                 "set_temperature",
                 {
@@ -127,7 +125,7 @@ describe("InMemoryDeviceGateway", () => {
     });
 
     it("clears targets during shutdown", async () => {
-        await gateWay.execute(
+        await gateway.execute(
             createCommand(
                 "start_cooking",
                 {
@@ -139,7 +137,7 @@ describe("InMemoryDeviceGateway", () => {
                 confirmed: true
             }
         );
-        const result = await gateWay.execute(
+        const result = await gateway.execute(
             createCommand(
                 "shutdown",
                 {}
