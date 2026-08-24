@@ -9,7 +9,8 @@
     "start": "tsx src/server.ts",
     "typecheck": "tsc --noEmit",
     "demo:llm": "tsx src/examples/test-llm-parser.ts",
-    "eval:commands": "tsx src/evaluation/run-command-evaluation.ts"
+    "eval:commands": "tsx src/evaluation/run-command-evaluation.ts",
+    "demo:status-agent": "tsx src/examples/test-device-status-agent.ts"
   },
   "keywords": [],
   "author": "",

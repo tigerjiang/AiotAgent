@@ -60,7 +60,7 @@ const getDeviceStateTool = defineDeviceTool({
     inputSchema: z.object({}).strict(),
 
     async handler(_input, context) {
-        const state = context.gateway.getState(
+        const state = await context.gateway.getState(
             context.deviceId
         );
         if (!state) {
@@ -203,6 +203,5 @@ export function createDeviceTools():
         shutdownTool
     ]
 }
-
 
 
