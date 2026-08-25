@@ -18,6 +18,8 @@ function buildCommand(
     intent: DeviceCommand["intent"],
     parameters: unknown
 ): DeviceCommand {
+    // deviceId、deviceType 和 issuedAt 只从可信执行上下文构造，模型参数无法
+    // 指向其他设备；DeviceCommandSchema 再统一校验领域命令结构。
     return DeviceCommandSchema.parse({
         requestId: randomUUID(),
         deviceId: context.deviceId,
@@ -35,6 +37,7 @@ async function executeCommand(
     command: DeviceCommand,
     context: DeviceToolContext
 ): Promise<DeviceToolResult> {
+    // 是否已确认由审批编排器写入 context，不能由工具参数或模型自行声明。
     const result = await context.gateway.execute(
         command,
         {
@@ -97,6 +100,7 @@ const startCookingTool = defineDeviceTool({
     }).strict(),
 
     async handler(input, context) {
+        // nullable 字段在领域命令中用“字段缺失”表达未设置，因此只展开非 null 值。
         const command = buildCommand(
             context,
             "start_cooking",
@@ -195,6 +199,7 @@ const shutdownTool = defineDeviceTool({
 
 export function createDeviceTools():
     DeviceTool[] {
+    // 注册表只接收这里明确列出的工具，形成可执行设备能力的白名单。
     return [
         getDeviceStateTool,
         startCookingTool,
@@ -203,5 +208,4 @@ export function createDeviceTools():
         shutdownTool
     ]
 }
-
 
