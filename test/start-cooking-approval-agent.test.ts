@@ -75,6 +75,7 @@ describe("approval start_cooking", () => {
         // deps 表示服务端可信依赖。客户端只提交 approvalId 和决策，不能篡改
         // deviceId、工具参数、confirmed 状态或审批存储中的模型上下文。
         deps = {
+            actorId:"user-a",
             createResponse,
             model: "test-model",
             registry: new DeviceToolRegistry(createDeviceTools()),

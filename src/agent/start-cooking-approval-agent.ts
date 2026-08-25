@@ -12,7 +12,6 @@ import type OpenAI from "openai";
 import type { DeviceToolRegistry } from "../tools/device-tool-registry";
 import type { DeviceToolContext } from "../tools/device-tool";
 import { InMemoryApprovalStore } from "../approval/in-memory-approval-store";
-import { de } from "zod/locales";
 
 export const StartCookingInputSchema = z.object({
     temperatureFahrenheit: z.number().int().min(165).max(500),
@@ -60,6 +59,7 @@ type CreateResponse = (
 ) => Promise<OpenAI.Responses.Response>
 
 interface Dependencies {
+    actorId: string;
     // Responses API 被注入，便于替换模型供应商并在测试中精确模拟两次响应。
     createResponse: CreateResponse;
     // 工具注册表负责查找工具，并统一执行工具自己的输入校验。
@@ -117,6 +117,7 @@ export async function proposeStartCooking(
     // 审批五分钟后失效，并保存续接模型会话所需的可信上下文。
     const approval = deps.approvals.create(
         {
+            actorId: deps.actorId,
             deviceId: deps.toolContext.deviceId,
             deviceType: deps.toolContext.deviceType,
             toolName: "start_cooking",
@@ -148,7 +149,7 @@ export async function resolveStartCooking(
 
     // 拒绝是终态：只更新审批记录，不执行工具，也无需再次请求模型。
     if (decision === "reject") {
-        const rejected = deps.approvals.reject(approvalId, deviceId);
+        const rejected = deps.approvals.reject(approvalId, deps.actorId, deviceId);
         return rejected
             ? { status: "rejected" as const, answer: "已取消启动烹饪。" }
             : { status: "error" as const, code: "APPROVAL_NOT_PENDING" };
@@ -156,7 +157,7 @@ export async function resolveStartCooking(
 
     // claim 在第一个 await 之前同步把 pending 改成 executing，阻止并发确认
     // 或网络重试对同一 approvalId 造成重复设备操作。
-    const claimed = deps.approvals.claim(approvalId, deviceId, deps.now?.() ?? new Date());
+    const claimed = deps.approvals.claim(approvalId, deps.actorId, deviceId, deps.now?.() ?? new Date());
     if (!claimed.success) {
         return {
             status: "error" as const, code: claimed.code

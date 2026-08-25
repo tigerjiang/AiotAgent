@@ -12,12 +12,17 @@ export type ApprovalStatus =
 
 export interface PendingDeviceAction {
     approvalId: string;
+
+    actorId: string;
     deviceId: string;
     deviceType: string;
+    
     toolName: "start_cooking";
     arguments: Record<string, unknown>;
+
     callId: string;
     continuationInput: unknown[];
+
     createdAt: string;
     expiresAt: string;
     status: ApprovalStatus;
@@ -49,6 +54,7 @@ export class InMemoryApprovalStore {
     }
 
     claim(approvalId: string,
+         actorId: string,
         deviceId: string,
         now = new Date(),
     ):
@@ -56,7 +62,9 @@ export class InMemoryApprovalStore {
         | { success: false; code: string } {
         const action = this.items.get(approvalId);
         // 审批必须绑定当前设备。不向其他设备泄露该 approvalId 是否真实存在。
-        if (!action || action.deviceId != deviceId) {
+        if (!action 
+            || action.actorId !== actorId 
+            || action.deviceId != deviceId) {
             return {
                 success: false,
                 code: "APPROVAL_NOT_FOUND"
@@ -79,12 +87,14 @@ export class InMemoryApprovalStore {
 
     }
     reject(approvalId: string,
+        actorId: string,
         deviceId: string,
     ): boolean {
         const action = this.items.get(approvalId);
         // 只有属于当前设备的 pending 审批能够被拒绝；终态不会被覆盖。
         if (!action ||
-            action.deviceId !== deviceId
+             action.actorId !== actorId
+            || action.deviceId !== deviceId
             || action.status !== "pending"
         ) {
             return false;
