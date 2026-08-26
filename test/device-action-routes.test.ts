@@ -28,6 +28,8 @@ const verifiedContext: VerifiedDeviceContext = {
     deviceType: "pellet_grill",
 }
 
+// 用两个 Token 模拟两个已认证用户；两者指向同一设备，用来验证 actorId 也
+// 是审批所有权的一部分，而不只是检查 deviceId。
 function contextForToken(
     authorization: string | undefined,
 ): VerifiedDeviceContext {
@@ -45,12 +47,18 @@ function contextForToken(
 
     throw new Error("UNAUTHORIZED");
 }
+
+/**
+ * 前四个用例隔离验证 HTTP 边界，最后一个用例串联真实 Agent、审批 Store、
+ * 工具注册表和内存网关，覆盖跨用户盗用 approvalId 的场景。
+ */
 describe("device action routes", () => {
     let service: {
         propose: ReturnType<typeof vi.fn>;
         decide: ReturnType<typeof vi.fn>;
     };
     beforeEach(() => {
+        // 路由单元测试使用业务服务替身，只关注校验、认证和参数转交。
         service = {
             propose: vi.fn().mockResolvedValue({
                 status: "approval_required",
@@ -163,6 +171,7 @@ describe("device action routes", () => {
   });
 
   it("does not let another user consume an approval", async () => {
+    // 该用例改用真实 service；模型只模拟提议阶段的函数调用输出。
     const proposalResponse = {
       id: "response-proposal",
       output_text: "",

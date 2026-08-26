@@ -1,7 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { success } from "zod";
-import { fa } from "zod/locales";
-import { omit } from "zod/mini";
+
+// 审批状态只能沿预定状态机前进，不能从终态退回 pending。
 export type ApprovalStatus =
     | "pending"
     | "executing"
@@ -13,6 +12,7 @@ export type ApprovalStatus =
 export interface PendingDeviceAction {
     approvalId: string;
 
+    // actorId 与 deviceId 共同限定审批所有权；只有 approvalId 不代表有权限。
     actorId: string;
     deviceId: string;
     deviceType: string;
@@ -21,6 +21,7 @@ export interface PendingDeviceAction {
     arguments: Record<string, unknown>;
 
     callId: string;
+    // 模型续接上下文只保存在服务端，客户端无法篡改函数调用及原始参数。
     continuationInput: unknown[];
 
     createdAt: string;
@@ -39,6 +40,7 @@ export interface PendingDeviceAction {
  * 原子语义，否则两个并发确认请求可能重复执行同一个设备命令。
  */
 export class InMemoryApprovalStore {
+    // 仅适合单进程演示和测试；多实例部署需要数据库事务或条件更新。
     private readonly items = new Map<string, PendingDeviceAction>();
     create(
         input: Omit<PendingDeviceAction, "approvalId" | "status">): PendingDeviceAction {
