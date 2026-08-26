@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "eventId": "4495f9fe-f1c8-43b7-973e-85629542567d",
+  "tenantId": "brisk-it",
+  "deviceId": "grill-demo-001",
+  "deviceType": "pellet_grill",
+  "sequence": 42,
+  "reportedAt": "2026-08-20T00:00:00.000Z",
+  "firmwareVersion": "2.4.1",
+  "state": {
+    "phase": "cooking",
+    "currentTemperatureFahrenheit": 221,
+    "targetTemperatureFahrenheit": 225,
+    "timerRemainingSeconds": 5340,
+    "probeTemperatureFahrenheit": 165,
+    "probeTargetFahrenheit": 203,
+    "faultCodes": []
+  }
+}
